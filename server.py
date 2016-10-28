@@ -15,7 +15,7 @@ class S(BaseHTTPRequestHandler):
 
     def do_GET(self):
         self._set_headers()
-        with open('server_index.html', 'r') as server_index:
+        with open('/opt/bin/server_index.html', 'r') as server_index:
             self.wfile.write(server_index.read().replace('\n', ''))
 
 
@@ -57,7 +57,7 @@ class S(BaseHTTPRequestHandler):
         f.close()
         p = Popen(['/opt/SoapUI/bin/testrunner.sh',
                    '-s"%s"' % suite,
-                   '/tmp/soapui-project.xml'], stdin=PIPE, stdout=PIPE, stderr=PIPE, bufsize=-1)
+                   '/tmp/soapui-project.xml' ], stdin=PIPE, stdout=PIPE, stderr=PIPE, bufsize=-1)
         try:
             output, error = p.communicate()
 
